@@ -1,0 +1,40 @@
+.mensaje-bienvenida-container {
+  margin: auto;
+}
+
+.bienvenida {
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.mensaje {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+img {
+  width: 200px;
+}
+
+.itemListContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  align-items: center;
+  justify-items: center;
+}
+
+.itemCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.itemCard img {
+  width: 200px;
+  justify-content: center;
+  align-self: center;
+}
+
+.itemCard p {
+  text-align: center;
+}
