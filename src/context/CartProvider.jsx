@@ -4,7 +4,7 @@ import { useState } from "react";
 function CartProvider({ children }) {
 	const [cart, setCart] = useState([]);
 
-	function agregarAlCarrito(prod) {
+	function agregarAlCarrito(prod, count) {
 		const isInCart = cart.some((item) => item.id === prod.id);
 		if (isInCart) {
 			const productoRepetido = cart.find((item) => item.id === prod.id);
@@ -13,7 +13,7 @@ function CartProvider({ children }) {
 			);
 			setCart([
 				...cartSinProdRepetido,
-				{ ...productoRepetido, count: productoRepetido.count + 1 },
+				{ ...productoRepetido, count: productoRepetido.count + count },
 			]);
 		} else {
 			setCart([...cart, prod]);

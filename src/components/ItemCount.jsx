@@ -10,16 +10,20 @@ function ItemCount({ item }) {
 		setCount(count + 1);
 	}
 	function handleRestar() {
-		setCount(count - 1);
+		if (count > 1) {
+			setCount(count - 1);
+		}
 	}
 	function handleAgregarAlCarrito() {
-		agregarAlCarrito({ ...item, count });
+		agregarAlCarrito({ ...item, count }, count);
 	}
 
 	return (
 		<div>
+			<button onClick={handleRestar} disabled={count <= 1}>
+				-
+			</button>
 			<p>{count}</p>
-			<button onClick={handleRestar}>-</button>
 			<button onClick={handleSumar}>+</button>
 			<button onClick={handleAgregarAlCarrito}>Agregar al carrito</button>
 		</div>
