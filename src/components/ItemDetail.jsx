@@ -7,18 +7,15 @@ function ItemDetail({ itemDetails }) {
 			{itemDetails ? (
 				<div>
 					<h2>{itemDetails.title}</h2>
-					<img src={itemDetails.thumbnail} alt={itemDetails.title} />
+					<img src={itemDetails.imagen} alt={itemDetails.nombre} />
 					<p>
-						<strong>Precio:</strong> ${itemDetails.price}
+						<strong>Precio:</strong> ${itemDetails.precio}
 					</p>
 					<p>
-						<strong>Descripción:</strong> {itemDetails.description}
+						<strong>Descripción:</strong> {itemDetails.descripcion}
 					</p>
 					<p>
-						<strong>Categoría:</strong> {itemDetails.category}
-					</p>
-					<p>
-						<strong>Stock:</strong> {itemDetails.stock}
+						<strong>Categoría:</strong> {itemDetails.categoria}
 					</p>
 					<p>
 						<strong>Rating:</strong> {itemDetails.rating}/5
