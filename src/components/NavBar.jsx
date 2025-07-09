@@ -30,7 +30,7 @@ function NavBar() {
 					Selecciona una categoría
 				</option>
 				<option value="todas" className="categoria">
-					Todas las categorías
+					Todos los productos
 				</option>
 				<option value="celulares" className="categoria">
 					Celulares
