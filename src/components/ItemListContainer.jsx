@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
 import { withLoading } from "../hoc/withLoading";
 import { useParams } from "react-router-dom";
+import { getProductsDb } from "../firebase/db";
 
 const ItemListWithLoading = withLoading(ItemList);
-
 function ItemListContainer() {
 	const [items, setItems] = useState([]);
 	const { categoryName } = useParams();
