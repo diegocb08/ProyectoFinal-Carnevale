@@ -1,8 +1,28 @@
+import "./Checkout.css";
+import { useCart } from "../context/useCart";
+
 export default function Checkout() {
+	const { cart } = useCart();
+
+	function handleSubmit(event) {
+		event.preventDefault();
+		const formData = new FormData(event.target);
+		const data = {
+			name: formData.get("name"),
+			email: formData.get("email"),
+			phone: formData.get("phone"),
+			address: formData.get("address"),
+			city: formData.get("city"),
+			zip: formData.get("zip"),
+			country: formData.get("country"),
+		};
+		console.log("Form submitted:", data);
+	}
+
 	return (
-		<div>
+		<div className="checkout-container">
 			<h2>Checkout</h2>
-			<form>
+			<form onSubmit={handleSubmit}>
 				<div>
 					<label htmlFor="name">Nombre:</label>
 					<input type="text" id="name" name="name" required />
