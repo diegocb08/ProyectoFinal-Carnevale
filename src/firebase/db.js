@@ -1,5 +1,5 @@
 import { app } from "./config";
-import { getFirestore, collection, getDocs, query, where, doc, getDoc } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, where, doc, getDoc, addDoc } from "firebase/firestore";
 
 const db = getFirestore(app);
 
@@ -32,4 +32,11 @@ export async function getProductByIdDB(id) {
         return null;
     }
 }
+
+
+export async function createOrderDB(orden) {
+    await addDoc(collection(db, "ordenes"), orden);
+}
+
+
 

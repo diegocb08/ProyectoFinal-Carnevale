@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/useCart";
 
 export default function CartContainer() {
-	const { cart } = useCart();
+	let { cart } = useCart();
 	const navigate = useNavigate();
 	const handleCheckout = () => {
 		navigate("/checkout");
@@ -10,10 +10,9 @@ export default function CartContainer() {
 
 	if (cart.length === 0) {
 		return (
-			//crear un componente que muestre   el carrito
 			<div>
-				<h2>Cart</h2>
-				<p>Your cart is empty.</p>
+				<h2>Carrito de Compras</h2>
+				<h3>Su Carrito está vacío</h3>
 				<button onClick={handleCheckout}>Finalizar Compra</button>
 			</div>
 		);
@@ -27,9 +26,9 @@ export default function CartContainer() {
 							<th>Imagen</th>
 							<th>Nombre</th>
 							<th>Categoría</th>
-							<th>Descripción</th>
 							<th>Rating</th>
 							<th>Precio</th>
+							<th>Cantidad</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -47,9 +46,12 @@ export default function CartContainer() {
 								</td>
 								<td>{item.nombre}</td>
 								<td>{item.categoria}</td>
-								<td>{item.descripcion}</td>
 								<td>{item.rating}/5</td>
 								<td>${item.precio}</td>
+								<td>{item.count}</td>
+								<td>
+									<button>Eliminar</button>
+								</td>
 							</tr>
 						))}
 					</tbody>

@@ -1,5 +1,7 @@
 import "./Checkout.css";
 import { useCart } from "../context/useCart";
+import { createOrderDB } from "../firebase/db";
+import { serverTimestamp } from "firebase/firestore";
 
 export default function Checkout() {
 	const { cart } = useCart();
@@ -7,7 +9,7 @@ export default function Checkout() {
 	function handleSubmit(event) {
 		event.preventDefault();
 		const formData = new FormData(event.target);
-		const data = {
+		const datosCliente = {
 			name: formData.get("name"),
 			email: formData.get("email"),
 			phone: formData.get("phone"),
@@ -16,7 +18,9 @@ export default function Checkout() {
 			zip: formData.get("zip"),
 			country: formData.get("country"),
 		};
-		console.log("Form submitted:", data);
+		const productos = cart;
+
+		createOrderDB({ datosCliente, productos, time: serverTimestamp() });
 	}
 
 	return (
