@@ -40,6 +40,7 @@ function CartProvider({ children }) {
 	function eliminarDelCarrito(id) {
 		const cartSinProdRepetido = cart.filter((item) => item.id !== id);
 		setCart(cartSinProdRepetido);
+		return cartSinProdRepetido;
 	}
 
 	return (

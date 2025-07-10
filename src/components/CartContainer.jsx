@@ -16,8 +16,11 @@ export default function CartContainer() {
 		navigate("/");
 	};
 	const handleEliminar = (item) => {
-		eliminarDelCarrito(item.id);
-		console.log(cart);
+		const carritoAhora = eliminarDelCarrito(item.id);
+		if (carritoAhora.length === 0) {
+			alert("El carrito está vacío");
+			navigate("/");
+		}
 	};
 
 	return (
