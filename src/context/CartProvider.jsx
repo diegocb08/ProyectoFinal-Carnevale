@@ -26,8 +26,33 @@ function CartProvider({ children }) {
 		return cantidad;
 	}
 
+	function vaciarElCarrito() {
+		setCart([]);
+	}
+	function getTotal() {
+		const total = cart.reduce(
+			(acc, item) => acc + item.precio * item.count,
+			0
+		);
+		return total;
+	}
+
+	function eliminarDelCarrito(id) {
+		const cartSinProdRepetido = cart.filter((item) => item.id !== id);
+		setCart(cartSinProdRepetido);
+	}
+
 	return (
-		<CartContext.Provider value={{ cart, agregarAlCarrito, getCantidad }}>
+		<CartContext.Provider
+			value={{
+				cart,
+				agregarAlCarrito,
+				getCantidad,
+				vaciarElCarrito,
+				getTotal,
+				eliminarDelCarrito,
+			}}
+		>
 			{children}
 		</CartContext.Provider>
 	);

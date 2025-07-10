@@ -1,14 +1,19 @@
 import "./CartWidget.css";
-import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import { useCart } from "../context/useCart";
 import { useNavigate } from "react-router-dom";
 
 function CartWidget() {
 	const navigate = useNavigate();
+	const { cart } = useCart();
 	const handleCartClick = () => {
-		navigate("/cart");
+		if (cart.length === 0) {
+			alert("El carrito está vacío");
+			return;
+		} else {
+			navigate("/cart");
+		}
 	};
-	const { getCantidad } = useContext(CartContext);
+	const { getCantidad } = useCart();
 	const cantidad = getCantidad();
 	return (
 		<div onClick={handleCartClick} className="cart-widget">

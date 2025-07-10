@@ -10,7 +10,6 @@ function ItemDetailContainer() {
 	async function getProductDetails(itemId) {
 		try {
 			const product = await getProductByIdDB(itemId);
-			console.log(product);
 			setItemDetails(product);
 		} catch (error) {
 			console.error(
