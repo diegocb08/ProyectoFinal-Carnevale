@@ -1,0 +1,90 @@
+.navContainer {
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: hsl(228, 100%, 67%);
+	padding: 10px 15px;
+}
+
+.navContainer h1 {
+	text-wrap: nowrap;
+}
+
+.navContainer a {
+	color: white;
+	text-decoration: none;
+}
+
+.navContainer a:hover {
+	text-decoration: underline;
+}
+
+.categorias {
+	padding: 12px 20px;
+	border-radius: 8px;
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: bold;
+	background-color: white;
+	color: hsl(228, 100%, 67%);
+	border: 2px solid white;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-size: 14px;
+	letter-spacing: 0.5px;
+}
+
+.categorias:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+	color: white;
+}
+
+.categorias:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.categoria {
+	padding: 8px;
+	background-color: white;
+	color: hsl(228, 100%, 67%);
+}
+
+/* Responsive design para NavBar - Mantiene layout horizontal */
+@media (max-width: 768px) {
+	.navContainer {
+		padding: 8px 12px;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	.navContainer h1 {
+		font-size: 1.2rem;
+		flex-shrink: 0;
+	}
+
+	.categorias {
+		padding: 8px 12px;
+		font-size: 11px;
+		min-width: 120px;
+		flex-shrink: 1;
+	}
+}
+
+@media (max-width: 480px) {
+	.navContainer {
+		padding: 6px 8px;
+		gap: 6px;
+	}
+
+	.navContainer h1 {
+		font-size: 1rem;
+	}
+
+	.categorias {
+		padding: 6px 10px;
+		font-size: 10px;
+		min-width: 100px;
+	}
+}

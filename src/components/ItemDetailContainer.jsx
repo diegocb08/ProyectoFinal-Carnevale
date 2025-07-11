@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
 import { getProductByIdDB } from "../firebase/db";
+import styles from "./ItemDetailContainer.module.css";
 
 function ItemDetailContainer() {
 	const [itemDetails, setItemDetails] = useState(null);
@@ -24,7 +25,11 @@ function ItemDetailContainer() {
 			getProductDetails(itemId);
 		}
 	}, [itemId]);
-	return <ItemDetail itemDetails={itemDetails} />;
+	return (
+		<div className={styles.itemDetailContainer}>
+			<ItemDetail itemDetails={itemDetails} styles={styles} />
+		</div>
+	);
 }
 
 export default ItemDetailContainer;

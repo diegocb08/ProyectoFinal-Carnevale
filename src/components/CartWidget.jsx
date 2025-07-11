@@ -1,4 +1,4 @@
-import "./CartWidget.css";
+import styles from "./CartWidget.module.css";
 import { useCart } from "../context/useCart";
 import { useNavigate } from "react-router-dom";
 
@@ -16,9 +16,9 @@ function CartWidget() {
 	const { getCantidad } = useCart();
 	const cantidad = getCantidad();
 	return (
-		<div onClick={handleCartClick} className="cart-widget">
-			<span className="cart-icon">
-				🛒<span className="cart-number">{cantidad}</span>
+		<div onClick={handleCartClick} className={styles.cartWidget}>
+			<span className={styles.cartIcon}>
+				🛒<span className={styles.cartNumber}>{cantidad}</span>
 			</span>
 		</div>
 	);

@@ -1,4 +1,4 @@
-import "./Checkout.css";
+import styles from "./Checkout.module.css";
 import { useCart } from "../context/useCart";
 import { createOrderDB } from "../firebase/db";
 import { serverTimestamp } from "firebase/firestore";
@@ -24,38 +24,96 @@ export default function Checkout() {
 	}
 
 	return (
-		<div className="checkout-container">
-			<h2>Checkout</h2>
-			<form onSubmit={handleSubmit}>
-				<div>
-					<label htmlFor="name">Nombre:</label>
-					<input type="text" id="name" name="name" required />
+		<div className={styles.checkoutContainer}>
+			<h2 className={styles.title}>Checkout</h2>
+			<form className={styles.form} onSubmit={handleSubmit}>
+				<div className={styles.inputGroup}>
+					<label className={styles.label} htmlFor="name">
+						Nombre:
+					</label>
+					<input
+						className={styles.input}
+						type="text"
+						id="name"
+						name="name"
+						required
+					/>
 				</div>
-				<div>
-					<label htmlFor="email">Email:</label>
-					<input type="email" id="email" name="email" required />
+				<div className={styles.inputGroup}>
+					<label className={styles.label} htmlFor="email">
+						Email:
+					</label>
+					<input
+						className={styles.input}
+						type="email"
+						id="email"
+						name="email"
+						required
+					/>
 				</div>
-				<div>
-					<label htmlFor="phone">Teléfono:</label>
-					<input type="tel" id="phone" name="phone" required />
+				<div className={styles.inputGroup}>
+					<label className={styles.label} htmlFor="phone">
+						Teléfono:
+					</label>
+					<input
+						className={styles.input}
+						type="tel"
+						id="phone"
+						name="phone"
+						required
+					/>
 				</div>
-				<div>
-					<label htmlFor="address">Dirección:</label>
-					<input type="text" id="address" name="address" required />
+				<div className={styles.inputGroup}>
+					<label className={styles.label} htmlFor="address">
+						Dirección:
+					</label>
+					<input
+						className={styles.input}
+						type="text"
+						id="address"
+						name="address"
+						required
+					/>
 				</div>
-				<div>
-					<label htmlFor="city">Ciudad:</label>
-					<input type="text" id="city" name="city" required />
+				<div className={styles.inputGroup}>
+					<label className={styles.label} htmlFor="city">
+						Ciudad:
+					</label>
+					<input
+						className={styles.input}
+						type="text"
+						id="city"
+						name="city"
+						required
+					/>
 				</div>
-				<div>
-					<label htmlFor="zip">Código Postal:</label>
-					<input type="text" id="zip" name="zip" required />
+				<div className={styles.inputGroup}>
+					<label className={styles.label} htmlFor="zip">
+						Código Postal:
+					</label>
+					<input
+						className={styles.input}
+						type="text"
+						id="zip"
+						name="zip"
+						required
+					/>
 				</div>
-				<div>
-					<label htmlFor="country">País:</label>
-					<input type="text" id="country" name="country" required />
+				<div className={styles.inputGroup}>
+					<label className={styles.label} htmlFor="country">
+						País:
+					</label>
+					<input
+						className={styles.input}
+						type="text"
+						id="country"
+						name="country"
+						required
+					/>
 				</div>
-				<button type="submit">Finalizar Compra</button>
+				<button className={styles.button} type="submit">
+					Finalizar Compra
+				</button>
 			</form>
 		</div>
 	);

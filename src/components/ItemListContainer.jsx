@@ -1,4 +1,4 @@
-import "./ItemListContainer.css";
+import styles from "./ItemListContainer.module.css";
 import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
 import { withLoading } from "../hoc/withLoading";
@@ -45,7 +45,7 @@ function ItemListContainer() {
 		}
 	}, [categoryName]);
 
-	return <ItemListWithLoading items={items} />;
+	return <ItemListWithLoading items={items} styles={styles} />;
 }
 
 export default ItemListContainer;

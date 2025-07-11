@@ -1,0 +1,240 @@
+.mensajeBienvenidaContainer {
+	margin: auto;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 400px;
+}
+
+.bienvenida {
+	text-align: center;
+	font-size: 2.5rem;
+	color: #333;
+	margin-bottom: 10px;
+	font-weight: 700;
+}
+
+.mensaje {
+	text-align: center;
+	font-size: 1.5rem;
+	margin-top: 20px;
+	color: #666;
+}
+
+.itemListContainer {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	align-items: stretch;
+	justify-items: center;
+	gap: 25px;
+	padding: 30px 20px;
+	max-width: 1400px;
+	margin: 0 auto;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.itemCard {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	border: 1px solid #e9ecef;
+	border-radius: 12px;
+	background-color: white;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	transition: all 0.3s ease;
+	width: 100%;
+	max-width: 320px;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+.itemCard:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+	border-color: hsl(228, 100%, 67%);
+}
+
+.itemCard img {
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 8px;
+	margin-bottom: 15px;
+	transition: transform 0.3s ease;
+}
+
+.itemCard:hover img {
+	transform: scale(1.05);
+}
+
+.itemCard p {
+	text-align: center;
+	margin: 8px 0;
+	font-weight: 500;
+	color: #333;
+}
+
+.itemCard p:nth-child(3) {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: hsl(228, 100%, 67%);
+	margin-bottom: 15px;
+}
+
+.itemCard button {
+	background-color: hsl(228, 100%, 67%);
+	color: white;
+	border: none;
+	padding: 12px 24px;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 600;
+	margin-top: auto;
+	transition: all 0.3s ease;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.itemCard button:hover {
+	background-color: hsl(228, 100%, 60%);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(98, 126, 234, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+	.itemListContainer {
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 20px;
+		padding: 25px 15px;
+	}
+
+	.itemCard {
+		max-width: 300px;
+	}
+}
+
+@media (max-width: 768px) {
+	.bienvenida {
+		font-size: 2rem;
+		margin-bottom: 8px;
+	}
+
+	.mensaje {
+		font-size: 1.2rem;
+		margin-top: 15px;
+	}
+
+	.mensajeBienvenidaContainer {
+		padding: 15px 10px;
+	}
+
+	.itemListContainer {
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 15px;
+		padding: 20px 10px;
+	}
+
+	.itemCard {
+		padding: 15px;
+		max-width: 280px;
+	}
+
+	.itemCard img {
+		width: 180px;
+		height: 180px;
+	}
+
+	.itemCard button {
+		padding: 10px 20px;
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 580px) {
+	.itemListContainer {
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 12px;
+		padding: 15px 8px;
+	}
+
+	.itemCard {
+		padding: 12px;
+		max-width: 250px;
+	}
+
+	.itemCard img {
+		width: 160px;
+		height: 160px;
+	}
+}
+
+@media (max-width: 480px) {
+	.bienvenida {
+		font-size: 1.7rem;
+	}
+
+	.mensaje {
+		font-size: 1rem;
+	}
+
+	.itemListContainer {
+		grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+		gap: 10px;
+		padding: 15px 5px;
+	}
+
+	.itemCard {
+		padding: 10px;
+		max-width: 200px;
+	}
+
+	.itemCard img {
+		width: 140px;
+		height: 140px;
+	}
+
+	.itemCard p {
+		font-size: 0.9rem;
+		margin: 6px 0;
+	}
+
+	.itemCard button {
+		padding: 8px 16px;
+		font-size: 12px;
+		width: 100%;
+	}
+}
+
+@media (max-width: 360px) {
+	.itemListContainer {
+		grid-template-columns: 1fr 1fr;
+		gap: 8px;
+		padding: 10px 5px;
+	}
+
+	.itemCard {
+		padding: 8px;
+		max-width: none;
+	}
+
+	.itemCard img {
+		width: 120px;
+		height: 120px;
+	}
+
+	.itemCard p {
+		font-size: 0.8rem;
+		margin: 4px 0;
+	}
+
+	.itemCard button {
+		padding: 6px 12px;
+		font-size: 11px;
+	}
+}

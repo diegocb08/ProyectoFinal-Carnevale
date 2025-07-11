@@ -1,17 +1,17 @@
 import { PuffLoader } from "react-spinners";
-import "./withLoading.css";
+import styles from "./withLoading.module.css";
 
 export function withLoading(Component) {
-  function ComponentWithLoading(props) {
-    if (props.items.length === 0) {
-      return (
-        <div className="loading-container">
-          <PuffLoader className="loading" />
-        </div>
-      );
-    }
+	function ComponentWithLoading(props) {
+		if (props.items.length === 0) {
+			return (
+				<div className={styles.loadingContainer}>
+					<PuffLoader className={styles.loading} />
+				</div>
+			);
+		}
 
-    return <Component {...props} />;
-  }
-  return ComponentWithLoading;
+		return <Component {...props} />;
+	}
+	return ComponentWithLoading;
 }

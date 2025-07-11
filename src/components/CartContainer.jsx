@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/useCart";
+import styles from "./CartContainer.module.css";
 
 export default function CartContainer() {
 	let { cart, vaciarElCarrito, getTotal, eliminarDelCarrito } = useCart();
@@ -23,52 +24,112 @@ export default function CartContainer() {
 		}
 	};
 
+	// Si el carrito está vacío, mostrar mensaje
+	if (cart.length === 0) {
+		return (
+			<div className={styles.cartContainer}>
+				<div className={styles.emptyCart}>
+					<div className={styles.emptyCartIcon}>🛒</div>
+					<div className={styles.emptyCartMessage}>
+						Tu carrito está vacío
+					</div>
+					<button
+						className={styles.emptyCartButton}
+						onClick={handleSeguirComprado}
+					>
+						Comenzar a comprar
+					</button>
+				</div>
+			</div>
+		);
+	}
+
 	return (
-		<div>
-			<h2>Cart</h2>
-			<table>
-				<thead>
+		<div className={styles.cartContainer}>
+			<h2 className={styles.cartTitle}>Mi Carrito</h2>
+			<table className={styles.cartTable}>
+				<thead className={styles.tableHeader}>
 					<tr>
 						<th>Imagen</th>
 						<th>Nombre</th>
 						<th>Precio</th>
 						<th>Cantidad</th>
+						<th>Acciones</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody className={styles.tableBody}>
 					{cart.map((item) => (
 						<tr key={item.id}>
-							<td>
+							<td className={styles.tableCell}>
 								<img
 									src={item.imagen}
 									alt={item.nombre}
-									style={{
-										width: "50px",
-										height: "50px",
-									}}
+									className={styles.productImage}
 								/>
 							</td>
-							<td>{item.nombre}</td>
-							<td>${item.precio}</td>
-							<td>{item.count}</td>
-							<td>
-								<button onClick={() => handleEliminar(item)}>
+							<td
+								className={`${styles.tableCell} ${styles.productName}`}
+							>
+								{item.nombre}
+							</td>
+							<td
+								className={`${styles.tableCell} ${styles.productPrice}`}
+							>
+								${item.precio.toLocaleString()}
+							</td>
+							<td className={styles.tableCell}>
+								<span className={styles.productQuantity}>
+									{item.count}
+								</span>
+							</td>
+							<td className={styles.tableCell}>
+								<button
+									className={styles.removeButton}
+									onClick={() => handleEliminar(item)}
+								>
 									Eliminar
 								</button>
 							</td>
 						</tr>
 					))}
 				</tbody>
-				<tfoot>
+				<tfoot className={styles.tableFooter}>
 					<tr>
-						<td colSpan="3">Total</td>
-						<td>${getTotal()}</td>
+						<td
+							colSpan="4"
+							className={`${styles.tableCell} ${styles.totalLabel}`}
+						>
+							Total
+						</td>
+						<td
+							className={`${styles.tableCell} ${styles.totalAmount}`}
+						>
+							${getTotal().toLocaleString()}
+						</td>
 					</tr>
 				</tfoot>
 			</table>
-			<button onClick={handleVaciarElCarrito}>Vaciar el Carrito</button>
-			<button onClick={handleCheckout}>Ir al Checkout</button>
-			<button onClick={handleSeguirComprado}> Seguir Comprando</button>
+
+			<div className={styles.actionButtons}>
+				<button
+					className={styles.clearCartButton}
+					onClick={handleVaciarElCarrito}
+				>
+					Vaciar Carrito
+				</button>
+				<button
+					className={styles.continueShoppingButton}
+					onClick={handleSeguirComprado}
+				>
+					Seguir Comprando
+				</button>
+				<button
+					className={styles.checkoutButton}
+					onClick={handleCheckout}
+				>
+					Finalizar Compra
+				</button>
+			</div>
 		</div>
 	);
 }

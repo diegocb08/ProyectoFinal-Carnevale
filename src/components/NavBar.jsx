@@ -1,5 +1,5 @@
 import CartWidget from "./CartWidget";
-import "./NavBar.css";
+import styles from "./NavBar.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 
 function NavBar() {
@@ -17,25 +17,25 @@ function NavBar() {
 	};
 
 	return (
-		<nav className="nav-container">
+		<nav className={styles.navContainer}>
 			<h1>
 				<NavLink to="/">E-Commerce</NavLink>
 			</h1>
 			<select
-				className="categorias"
+				className={styles.categorias}
 				onChange={handleCategoryChange}
 				defaultValue="placeholder"
 			>
 				<option value="placeholder" disabled>
 					Selecciona una categoría
 				</option>
-				<option value="todas" className="categoria">
+				<option value="todas" className={styles.categoria}>
 					Todos los productos
 				</option>
-				<option value="celulares" className="categoria">
+				<option value="celulares" className={styles.categoria}>
 					Celulares
 				</option>
-				<option value="notebooks" className="categoria">
+				<option value="notebooks" className={styles.categoria}>
 					Notebooks
 				</option>
 			</select>

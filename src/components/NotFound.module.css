@@ -1,0 +1,36 @@
+.notFoundContainer {
+	text-align: center;
+	margin: 50px auto;
+	padding: 40px 20px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	max-width: 600px;
+	background-color: #f9f9f9;
+	min-height: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.notFoundContainer h1 {
+	font-size: 5em;
+	color: #e74c3c;
+	margin-bottom: 10px;
+}
+
+.notFoundContainer p {
+	font-size: 1.2em;
+	color: #555;
+	margin-bottom: 15px;
+}
+
+.notFoundContainer a {
+	color: #3498db;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.notFoundContainer a:hover {
+	text-decoration: underline;
+}

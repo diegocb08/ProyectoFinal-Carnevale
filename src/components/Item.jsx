@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
-function Item({ item }) {
+function Item({ item, styles }) {
 	const navigate = useNavigate();
 
 	return (
-		<div className="itemCard">
+		<div className={styles.itemCard}>
 			<img src={item.imagen} alt={"item.title"} />
 			<p>{item.nombre}</p>
 			<p>Precio: ${item.precio}</p>
