@@ -1,17 +1,29 @@
 import CartWidget from "./CartWidget";
 import styles from "./NavBar.module.css";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function NavBar() {
 	const navigate = useNavigate();
+	const location = useLocation();
+	const [selectedCategory, setSelectedCategory] = useState("placeholder");
+
+	// Resetear el select cuando estamos en la ruta raíz
+	useEffect(() => {
+		if (location.pathname === "/") {
+			setSelectedCategory("placeholder");
+		}
+	}, [location.pathname]);
 
 	const handleCategoryChange = (event) => {
-		const selectedCategory = event.target.value;
-		if (selectedCategory && selectedCategory !== "placeholder") {
-			if (selectedCategory === "todas") {
+		const category = event.target.value;
+		setSelectedCategory(category);
+
+		if (category && category !== "placeholder") {
+			if (category === "todas") {
 				navigate("/");
 			} else {
-				navigate(`/category/${selectedCategory}`);
+				navigate(`/category/${category}`);
 			}
 		}
 	};
@@ -24,7 +36,7 @@ function NavBar() {
 			<select
 				className={styles.categorias}
 				onChange={handleCategoryChange}
-				defaultValue="placeholder"
+				value={selectedCategory}
 			>
 				<option value="placeholder" disabled>
 					Selecciona una categoría
@@ -37,6 +49,12 @@ function NavBar() {
 				</option>
 				<option value="notebooks" className={styles.categoria}>
 					Notebooks
+				</option>
+				<option value="monitores" className={styles.categoria}>
+					Monitores
+				</option>
+				<option value="audio" className={styles.categoria}>
+					Audio
 				</option>
 			</select>
 			<CartWidget />
