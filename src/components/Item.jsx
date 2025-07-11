@@ -5,7 +5,7 @@ function Item({ item, styles }) {
 
 	return (
 		<div className={styles.itemCard}>
-			<img src={item.imagen} alt={"item.title"} />
+			<img src={item.imagen} alt={item.nombre} />
 			<p>{item.nombre}</p>
 			<p>Precio: ${item.precio}</p>
 			<button onClick={() => navigate(`/item/${item.id}`)}>
