@@ -203,46 +203,6 @@
 	box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
 }
 
-.emptyCart {
-	text-align: center;
-	padding: 60px 20px;
-	background-color: transparent;
-	border-radius: 12px;
-}
-
-.emptyCartIcon {
-	font-size: 4rem;
-	color: #dee2e6;
-	margin-bottom: 20px;
-}
-
-.emptyCartMessage {
-	font-size: 1.3rem;
-	color: #6c757d;
-	margin-bottom: 25px;
-	font-weight: 500;
-}
-
-.emptyCartButton {
-	background-color: hsl(228, 100%, 67%);
-	color: white;
-	border: none;
-	padding: 12px 30px;
-	border-radius: 8px;
-	font-size: 1rem;
-	font-weight: 600;
-	cursor: pointer;
-	transition: all 0.3s ease;
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
-}
-
-.emptyCartButton:hover {
-	background-color: hsl(228, 100%, 60%);
-	transform: translateY(-2px);
-	box-shadow: 0 4px 12px rgba(98, 126, 234, 0.3);
-}
-
 .quantityControls {
 	display: flex;
 	align-items: center;

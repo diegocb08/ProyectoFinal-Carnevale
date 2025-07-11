@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/useCart";
 import styles from "./CartContainer.module.css";
 import { toast } from "react-toastify";
+import EmptyCart from "./EmptyCart";
 
 export default function CartContainer() {
 	let {
@@ -115,18 +116,7 @@ export default function CartContainer() {
 	if (cart.length === 0) {
 		return (
 			<div className={styles.cartContainer}>
-				<div className={styles.emptyCart}>
-					<div className={styles.emptyCartIcon}>🛒</div>
-					<div className={styles.emptyCartMessage}>
-						Tu carrito está vacío
-					</div>
-					<button
-						className={styles.emptyCartButton}
-						onClick={handleSeguirComprado}
-					>
-						Comenzar a comprar
-					</button>
-				</div>
+				<EmptyCart />
 			</div>
 		);
 	}
