@@ -4,10 +4,15 @@ import { createOrderDB } from "../firebase/db";
 import { serverTimestamp } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import PurchaseSummary from "./PurchaseSummary";
 
 export default function Checkout() {
 	const { cart, vaciarElCarrito, getTotal } = useCart();
 	const navigate = useNavigate();
+	const [isProcessing, setIsProcessing] = useState(false);
+	const [showSummary, setShowSummary] = useState(false);
+	const [purchaseData, setPurchaseData] = useState(null);
 
 	const handleVolverAlCarrito = () => {
 		navigate("/cart");
@@ -17,8 +22,20 @@ export default function Checkout() {
 		navigate("/");
 	};
 
+	const handleVolverAlInicio = () => {
+		vaciarElCarrito();
+		setShowSummary(false);
+		setIsProcessing(false);
+		setPurchaseData(null);
+		navigate("/");
+	};
+
 	function handleSubmit(event) {
 		event.preventDefault();
+
+		// Prevenir múltiples envíos
+		if (isProcessing) return;
+
 		const formData = new FormData(event.target);
 		const datosCliente = {
 			nombre: formData.get("nombre"),
@@ -31,6 +48,9 @@ export default function Checkout() {
 		};
 		const productos = cart;
 		const total = getTotal();
+
+		// Marcar como procesando
+		setIsProcessing(true);
 
 		// Toast de confirmación antes de procesar
 		toast.warn(
@@ -50,7 +70,10 @@ export default function Checkout() {
 						Sí, confirmar compra
 					</button>
 					<button
-						onClick={() => toast.dismiss()}
+						onClick={() => {
+							toast.dismiss();
+							setIsProcessing(false); // Resetear el estado
+						}}
 						className="toast-confirm-button cancel"
 					>
 						Cancelar
@@ -77,36 +100,16 @@ export default function Checkout() {
 				time: serverTimestamp(),
 			});
 
-			// Modal de éxito
-			toast.success(
-				<div>
-					<p>¡Compra realizada con éxito!</p>
-					<p>Gracias por tu compra 🎉</p>
-					<div style={{ marginTop: "10px" }}>
-						<button
-							onClick={() => {
-								toast.dismiss();
-								vaciarElCarrito();
-								navigate("/");
-							}}
-							className="toast-confirm-button checkout"
-						>
-							Volver al inicio
-						</button>
-					</div>
-				</div>,
-				{
-					position: "top-center",
-					autoClose: false,
-					hideProgressBar: true,
-					closeOnClick: false,
-					pauseOnHover: true,
-					draggable: false,
-					closeButton: false,
-				}
-			);
+			// Guardar datos para el resumen y mostrar componente
+			setPurchaseData({
+				datosCliente,
+				productos,
+				total: getTotal(),
+			});
+			setShowSummary(true);
 		} catch (error) {
 			console.error("Error al procesar la compra:", error);
+			setIsProcessing(false); // Resetear estado en caso de error
 			toast.error(
 				"Error al procesar la compra. Por favor, intenta nuevamente.",
 				{
@@ -221,6 +224,7 @@ export default function Checkout() {
 						type="button"
 						className={styles.secondaryButton}
 						onClick={handleSeguirComprando}
+						disabled={isProcessing}
 					>
 						Seguir Comprando
 					</button>
@@ -228,14 +232,28 @@ export default function Checkout() {
 						type="button"
 						className={styles.secondaryButton}
 						onClick={handleVolverAlCarrito}
+						disabled={isProcessing}
 					>
 						Volver al Carrito
 					</button>
-					<button className={styles.button} type="submit">
-						Finalizar Compra
+					<button
+						className={styles.button}
+						type="submit"
+						disabled={isProcessing}
+					>
+						{isProcessing ? "Procesando..." : "Finalizar Compra"}
 					</button>
 				</div>
 			</form>
+
+			{showSummary && purchaseData && (
+				<PurchaseSummary
+					datosCliente={purchaseData.datosCliente}
+					productos={purchaseData.productos}
+					total={purchaseData.total}
+					onVolver={handleVolverAlInicio}
+				/>
+			)}
 		</div>
 	);
 }

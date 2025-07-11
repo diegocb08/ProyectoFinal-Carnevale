@@ -1,8 +1,39 @@
 import { CartContext } from "./CartContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function CartProvider({ children }) {
-	const [cart, setCart] = useState([]);
+	// Función para cargar el carrito desde localStorage
+	const loadCartFromStorage = () => {
+		try {
+			const savedCart = localStorage.getItem("cart");
+			return savedCart ? JSON.parse(savedCart) : [];
+		} catch (error) {
+			console.error(
+				"Error al cargar el carrito desde localStorage:",
+				error
+			);
+			return [];
+		}
+	};
+
+	// Función para guardar el carrito en localStorage
+	const saveCartToStorage = (cart) => {
+		try {
+			localStorage.setItem("cart", JSON.stringify(cart));
+		} catch (error) {
+			console.error(
+				"Error al guardar el carrito en localStorage:",
+				error
+			);
+		}
+	};
+
+	const [cart, setCart] = useState(loadCartFromStorage);
+
+	// Efecto para guardar el carrito cada vez que cambie
+	useEffect(() => {
+		saveCartToStorage(cart);
+	}, [cart]);
 
 	function agregarAlCarrito(prod, count) {
 		const isInCart = cart.some((item) => item.id === prod.id);
@@ -28,6 +59,7 @@ function CartProvider({ children }) {
 
 	function vaciarElCarrito() {
 		setCart([]);
+		localStorage.removeItem("cart");
 	}
 	function getTotal() {
 		const total = cart.reduce(

@@ -60,6 +60,19 @@
 	box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
 }
 
+.button:disabled {
+	background-color: #6c757d;
+	cursor: not-allowed;
+	transform: none;
+	box-shadow: none;
+}
+
+.button:disabled:hover {
+	background-color: #6c757d;
+	transform: none;
+	box-shadow: none;
+}
+
 .title {
 	text-align: center;
 	margin-bottom: 20px;
@@ -133,6 +146,19 @@
 	background-color: #5a6268;
 	transform: translateY(-2px);
 	box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+.secondaryButton:disabled {
+	background-color: #adb5bd;
+	cursor: not-allowed;
+	transform: none;
+	box-shadow: none;
+}
+
+.secondaryButton:disabled:hover {
+	background-color: #adb5bd;
+	transform: none;
+	box-shadow: none;
 }
 
 /* Responsive design para botones */
