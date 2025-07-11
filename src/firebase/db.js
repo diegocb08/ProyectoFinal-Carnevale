@@ -33,6 +33,19 @@ export async function getProductByIdDB(id) {
     }
 }
 
+export async function getCategoriesDB() {
+    const documentos = await getDocs(collection(db, "productos"));
+    const categorias = new Set();
+
+    documentos.forEach((doc) => {
+        const producto = doc.data();
+        if (producto.categoria) {
+            categorias.add(producto.categoria);
+        }
+    });
+
+    return Array.from(categorias).sort();
+}
 
 export async function createOrderDB(orden) {
     await addDoc(collection(db, "ordenes"), orden);
