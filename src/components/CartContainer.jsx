@@ -14,41 +14,7 @@ export default function CartContainer() {
 	} = useCart();
 	const navigate = useNavigate();
 	const handleCheckout = () => {
-		const total = getTotal();
-		toast.warn(
-			<div>
-				<p>¿Estás seguro de que quieres proceder con la compra?</p>
-				<p>
-					<strong>Total a pagar: ${total.toLocaleString()}</strong>
-				</p>
-				<div style={{ marginTop: "10px" }}>
-					<button
-						onClick={() => {
-							toast.dismiss();
-							navigate("/checkout");
-						}}
-						className="toast-confirm-button checkout"
-					>
-						Sí, continuar
-					</button>
-					<button
-						onClick={() => toast.dismiss()}
-						className="toast-confirm-button cancel"
-					>
-						Cancelar
-					</button>
-				</div>
-			</div>,
-			{
-				position: "top-center",
-				autoClose: false,
-				hideProgressBar: true,
-				closeOnClick: false,
-				pauseOnHover: true,
-				draggable: false,
-				closeButton: false,
-			}
-		);
+		navigate("/checkout");
 	};
 	const handleSeguirComprado = () => {
 		navigate("/");
@@ -264,7 +230,7 @@ export default function CartContainer() {
 					className={styles.checkoutButton}
 					onClick={handleCheckout}
 				>
-					Finalizar Compra
+					Ir al Checkout
 				</button>
 			</div>
 		</div>

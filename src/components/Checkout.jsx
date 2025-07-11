@@ -21,13 +21,13 @@ export default function Checkout() {
 		event.preventDefault();
 		const formData = new FormData(event.target);
 		const datosCliente = {
-			name: formData.get("name"),
+			nombre: formData.get("nombre"),
 			email: formData.get("email"),
-			phone: formData.get("phone"),
-			address: formData.get("address"),
-			city: formData.get("city"),
-			zip: formData.get("zip"),
-			country: formData.get("country"),
+			telefono: formData.get("telefono"),
+			direccion: formData.get("direccion"),
+			ciudad: formData.get("ciudad"),
+			codigoPostal: formData.get("codigoPostal"),
+			pais: formData.get("pais"),
 		};
 		const productos = cart;
 		const total = getTotal();
@@ -91,7 +91,7 @@ export default function Checkout() {
 							}}
 							className="toast-confirm-button checkout"
 						>
-							Continuar
+							Volver al inicio
 						</button>
 					</div>
 				</div>,
@@ -126,14 +126,15 @@ export default function Checkout() {
 			<h2 className={styles.title}>Checkout</h2>
 			<form className={styles.form} onSubmit={handleSubmit}>
 				<div className={styles.inputGroup}>
-					<label className={styles.label} htmlFor="name">
+					<label className={styles.label} htmlFor="nombre">
 						Nombre:
 					</label>
 					<input
 						className={styles.input}
 						type="text"
-						id="name"
-						name="name"
+						id="nombre"
+						name="nombre"
+						placeholder="Ingresa tu nombre completo"
 						required
 					/>
 				</div>
@@ -146,66 +147,72 @@ export default function Checkout() {
 						type="email"
 						id="email"
 						name="email"
+						placeholder="ejemplo@correo.com"
 						required
 					/>
 				</div>
 				<div className={styles.inputGroup}>
-					<label className={styles.label} htmlFor="phone">
+					<label className={styles.label} htmlFor="telefono">
 						Teléfono:
 					</label>
 					<input
 						className={styles.input}
 						type="tel"
-						id="phone"
-						name="phone"
+						id="telefono"
+						name="telefono"
+						placeholder="11-1234-5678"
 						required
 					/>
 				</div>
 				<div className={styles.inputGroup}>
-					<label className={styles.label} htmlFor="address">
+					<label className={styles.label} htmlFor="direccion">
 						Dirección:
 					</label>
 					<input
 						className={styles.input}
 						type="text"
-						id="address"
-						name="address"
+						id="direccion"
+						name="direccion"
+						placeholder="Calle y número"
 						required
 					/>
 				</div>
 				<div className={styles.inputGroup}>
-					<label className={styles.label} htmlFor="city">
+					<label className={styles.label} htmlFor="ciudad">
 						Ciudad:
 					</label>
 					<input
 						className={styles.input}
 						type="text"
-						id="city"
-						name="city"
+						id="ciudad"
+						name="ciudad"
+						placeholder="Nombre de la ciudad"
 						required
 					/>
 				</div>
 				<div className={styles.inputGroup}>
-					<label className={styles.label} htmlFor="zip">
+					<label className={styles.label} htmlFor="codigoPostal">
 						Código Postal:
 					</label>
 					<input
 						className={styles.input}
 						type="text"
-						id="zip"
-						name="zip"
+						id="codigoPostal"
+						name="codigoPostal"
+						placeholder="1234"
 						required
 					/>
 				</div>
 				<div className={styles.inputGroup}>
-					<label className={styles.label} htmlFor="country">
+					<label className={styles.label} htmlFor="pais">
 						País:
 					</label>
 					<input
 						className={styles.input}
 						type="text"
-						id="country"
-						name="country"
+						id="pais"
+						name="pais"
+						placeholder="Argentina"
 						required
 					/>
 				</div>
