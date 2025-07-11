@@ -33,7 +33,7 @@ export default function Checkout() {
 	function handleSubmit(event) {
 		event.preventDefault();
 
-		// Prevenir múltiples envíos
+		// Prevenir múltiples "finalizaciones de compra"
 		if (isProcessing) return;
 
 		const formData = new FormData(event.target);
@@ -94,7 +94,7 @@ export default function Checkout() {
 
 	async function procesarCompra(datosCliente, productos) {
 		try {
-			await createOrderDB({
+			const orderId = await createOrderDB({
 				datosCliente,
 				productos,
 				time: serverTimestamp(),
@@ -105,11 +105,12 @@ export default function Checkout() {
 				datosCliente,
 				productos,
 				total: getTotal(),
+				orderId: orderId,
 			});
 			setShowSummary(true);
 		} catch (error) {
 			console.error("Error al procesar la compra:", error);
-			setIsProcessing(false); // Resetear estado en caso de error
+			setIsProcessing(false);
 			toast.error(
 				"Error al procesar la compra. Por favor, intenta nuevamente.",
 				{
@@ -251,6 +252,7 @@ export default function Checkout() {
 					datosCliente={purchaseData.datosCliente}
 					productos={purchaseData.productos}
 					total={purchaseData.total}
+					orderId={purchaseData.orderId}
 					onVolver={handleVolverAlInicio}
 				/>
 			)}

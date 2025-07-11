@@ -48,7 +48,8 @@ export async function getCategoriesDB() {
 }
 
 export async function createOrderDB(orden) {
-    await addDoc(collection(db, "ordenes"), orden);
+    const docRef = await addDoc(collection(db, "ordenes"), orden);
+    return docRef.id;
 }
 
 

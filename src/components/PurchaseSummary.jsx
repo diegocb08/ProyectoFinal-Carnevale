@@ -4,6 +4,7 @@ export default function PurchaseSummary({
 	datosCliente,
 	productos,
 	total,
+	orderId,
 	onVolver,
 }) {
 	return (
@@ -13,6 +14,7 @@ export default function PurchaseSummary({
 					<h2 className={styles.title}>
 						¡Compra realizada con éxito!
 					</h2>
+					<div className={styles.orderNumber}>Orden #{orderId}</div>
 					<div className={styles.checkIcon}>✅</div>
 				</div>
 

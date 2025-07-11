@@ -49,6 +49,14 @@
 	font-weight: 700;
 }
 
+.orderNumber {
+	color: rgba(255, 255, 255, 0.9);
+	font-size: 1rem;
+	font-weight: 500;
+	margin: 10px 0;
+	letter-spacing: 0.5px;
+}
+
 .checkIcon {
 	font-size: 3rem;
 	margin-top: 10px;
