@@ -68,3 +68,30 @@
 	background-color: #28a745;
 	color: white;
 }
+
+/* Ajustar posición de toasts para evitar superposición con navbar */
+.Toastify__toast-container--top-center {
+	top: 90px;
+}
+
+.Toastify__toast-container--top-right {
+	top: 90px;
+}
+
+.Toastify__toast-container--top-left {
+	top: 90px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+	.Toastify__toast-container--top-center,
+	.Toastify__toast-container--top-right,
+	.Toastify__toast-container--top-left {
+		top: 70px;
+	}
+
+	.Toastify__toast {
+		margin: 0 10px;
+		font-size: 14px;
+	}
+}

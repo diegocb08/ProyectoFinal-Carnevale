@@ -43,6 +43,30 @@ function CartProvider({ children }) {
 		return cartSinProdRepetido;
 	}
 
+	function incrementarCantidad(id) {
+		const cartActualizado = cart.map((item) => {
+			if (item.id === id) {
+				return { ...item, count: item.count + 1 };
+			}
+			return item;
+		});
+		setCart(cartActualizado);
+	}
+
+	function decrementarCantidad(id) {
+		const cartActualizado = cart.map((item) => {
+			if (item.id === id) {
+				const nuevaCantidad = item.count - 1;
+				return { ...item, count: nuevaCantidad };
+			}
+			return item;
+		});
+
+		// Filtrar productos con cantidad 0
+		const cartFiltrado = cartActualizado.filter((item) => item.count > 0);
+		setCart(cartFiltrado);
+	}
+
 	return (
 		<CartContext.Provider
 			value={{
@@ -52,6 +76,8 @@ function CartProvider({ children }) {
 				vaciarElCarrito,
 				getTotal,
 				eliminarDelCarrito,
+				incrementarCantidad,
+				decrementarCantidad,
 			}}
 		>
 			{children}

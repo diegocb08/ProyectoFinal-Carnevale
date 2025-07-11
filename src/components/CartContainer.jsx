@@ -4,7 +4,14 @@ import styles from "./CartContainer.module.css";
 import { toast } from "react-toastify";
 
 export default function CartContainer() {
-	let { cart, vaciarElCarrito, getTotal, eliminarDelCarrito } = useCart();
+	let {
+		cart,
+		vaciarElCarrito,
+		getTotal,
+		eliminarDelCarrito,
+		incrementarCantidad,
+		decrementarCantidad,
+	} = useCart();
 	const navigate = useNavigate();
 	const handleCheckout = () => {
 		const total = getTotal();
@@ -87,6 +94,57 @@ export default function CartContainer() {
 		eliminarDelCarrito(item.id);
 	};
 
+	const handleDecrementar = (item) => {
+		if (item.count === 1) {
+			toast.warn(
+				<div>
+					<p>
+						¿Estás seguro de que quieres eliminar este producto del
+						carrito?
+					</p>
+					<p>
+						<strong>{item.nombre}</strong>
+					</p>
+					<div style={{ marginTop: "10px" }}>
+						<button
+							onClick={() => {
+								toast.dismiss();
+								decrementarCantidad(item.id);
+								toast.success(
+									"Producto eliminado del carrito",
+									{
+										position: "top-right",
+										autoClose: 2000,
+									}
+								);
+							}}
+							className="toast-confirm-button confirm"
+						>
+							Sí, eliminar
+						</button>
+						<button
+							onClick={() => toast.dismiss()}
+							className="toast-confirm-button cancel"
+						>
+							Cancelar
+						</button>
+					</div>
+				</div>,
+				{
+					position: "top-center",
+					autoClose: false,
+					hideProgressBar: true,
+					closeOnClick: false,
+					pauseOnHover: true,
+					draggable: false,
+					closeButton: false,
+				}
+			);
+		} else {
+			decrementarCantidad(item.id);
+		}
+	};
+
 	// Si el carrito está vacío, mostrar mensaje
 	if (cart.length === 0) {
 		return (
@@ -141,9 +199,25 @@ export default function CartContainer() {
 								${item.precio.toLocaleString()}
 							</td>
 							<td className={styles.tableCell}>
-								<span className={styles.productQuantity}>
-									{item.count}
-								</span>
+								<div className={styles.quantityControls}>
+									<button
+										className={styles.quantityButton}
+										onClick={() => handleDecrementar(item)}
+									>
+										-
+									</button>
+									<span className={styles.productQuantity}>
+										{item.count}
+									</span>
+									<button
+										className={styles.quantityButton}
+										onClick={() =>
+											incrementarCantidad(item.id)
+										}
+									>
+										+
+									</button>
+								</div>
 							</td>
 							<td className={styles.tableCell}>
 								<button

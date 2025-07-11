@@ -206,9 +206,8 @@
 .emptyCart {
 	text-align: center;
 	padding: 60px 20px;
-	background-color: white;
+	background-color: transparent;
 	border-radius: 12px;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 .emptyCartIcon {
@@ -242,6 +241,39 @@
 	background-color: hsl(228, 100%, 60%);
 	transform: translateY(-2px);
 	box-shadow: 0 4px 12px rgba(98, 126, 234, 0.3);
+}
+
+.quantityControls {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	justify-content: center;
+}
+
+.quantityButton {
+	background-color: hsl(228, 100%, 67%);
+	color: white;
+	border: none;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	font-size: 1.2rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.quantityButton:hover {
+	background-color: hsl(228, 100%, 57%);
+	transform: scale(1.1);
+	box-shadow: 0 3px 8px rgba(98, 126, 234, 0.3);
+}
+
+.quantityButton:active {
+	transform: scale(0.95);
 }
 
 /* Responsive */
@@ -278,6 +310,22 @@
 	.productName {
 		max-width: 120px;
 		font-size: 0.9rem;
+	}
+
+	.quantityControls {
+		gap: 5px;
+	}
+
+	.quantityButton {
+		width: 28px;
+		height: 28px;
+		font-size: 1rem;
+	}
+
+	.productQuantity {
+		font-size: 0.9rem;
+		padding: 3px 8px;
+		min-width: 30px;
 	}
 
 	.actionButtons {

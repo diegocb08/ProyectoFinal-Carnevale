@@ -27,7 +27,7 @@ function ItemCount({ item, styles }) {
 		toast.success(
 			`${item.nombre} agregado al carrito (${count} unidades)`,
 			{
-				position: "top-right",
+				position: "top-center",
 				autoClose: 3000,
 				hideProgressBar: false,
 				closeOnClick: true,
