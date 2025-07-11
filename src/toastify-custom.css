@@ -1,0 +1,70 @@
+.Toastify__toast {
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	font-family: var(--font-family);
+}
+
+.Toastify__toast--success {
+	background-color: #28a745;
+	color: white;
+}
+
+.Toastify__toast--error {
+	background-color: #dc3545;
+	color: white;
+}
+
+.Toastify__toast--warning {
+	background-color: #fff3cd;
+	color: #856404;
+	border: 1px solid #ffeaa7;
+}
+
+.Toastify__toast--info {
+	background-color: #17a2b8;
+	color: white;
+}
+
+.Toastify__progress-bar {
+	background-color: rgba(255, 255, 255, 0.7);
+}
+
+.Toastify__close-button {
+	color: inherit;
+	opacity: 0.8;
+}
+
+.Toastify__close-button:hover {
+	opacity: 1;
+}
+
+/* Estilos para los botones de confirmación */
+.toast-confirm-button {
+	padding: 6px 12px;
+	margin: 5px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: 500;
+	transition: background-color 0.2s ease;
+}
+
+.toast-confirm-button:hover {
+	opacity: 0.9;
+}
+
+.toast-confirm-button.confirm {
+	background-color: #dc3545;
+	color: white;
+}
+
+.toast-confirm-button.cancel {
+	background-color: #6c757d;
+	color: white;
+}
+
+.toast-confirm-button.checkout {
+	background-color: #28a745;
+	color: white;
+}

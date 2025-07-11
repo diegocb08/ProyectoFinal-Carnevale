@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useCart } from "../context/useCart";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function ItemCount({ item, styles }) {
 	const [count, setCount] = useState(1);
@@ -23,6 +24,17 @@ function ItemCount({ item, styles }) {
 
 	function handleAgregarAlCarrito() {
 		agregarAlCarrito({ ...item, count }, count);
+		toast.success(
+			`${item.nombre} agregado al carrito (${count} unidades)`,
+			{
+				position: "top-right",
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+			}
+		);
 	}
 
 	return (

@@ -6,6 +6,9 @@ import NotFound from "./components/NotFound";
 import Checkout from "./components/Checkout";
 import CartContainer from "./components/CartContainer";
 import styles from "./App.module.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./toastify-custom.css";
 
 function App() {
 	return (
@@ -31,6 +34,18 @@ function App() {
 					</div>
 				</div>
 			</BrowserRouter>
+			<ToastContainer
+				position="top-right"
+				autoClose={3000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="light"
+			/>
 		</div>
 	);
 }
