@@ -303,9 +303,8 @@
 
 @media (max-width: 480px) {
 	.cartTable {
-		display: block;
-		overflow-x: auto;
-		white-space: nowrap;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.tableHeader,
